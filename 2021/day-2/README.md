@@ -72,9 +72,13 @@ Using this new interpretation of the commands, calculate the horizontal position
 ```py
 #! /usr/bin/env python3
 
+from re import search, match
+
 def main():
-  upDowns = [(line.split()[0], -int(line.rstrip().split()[1])) if line.split()[0] == "up" else (line.split()[0], int(line.rstrip().split()[1])) for line in open("input.txt")]
-  p1 = sum(int(line.rstrip().split()[1]) for line in open("input.txt") if line.split()[0] == "forward") * sum(tup[1] for tup in upDowns)
+  nP = r'[0-9]+'
+  up = sum(-int(search(nP, line).group()) for line in open("input.txt") if bool(match("up", line))) 
+  down = sum(int(search(nP, line).group()) for line in open("input.txt") if bool(match("down", line)))
+  p1 = sum(int(search(nP, line).group()) for line in open("input.txt") if bool(match("forward", line))) * (up + down)
 
   (x, y, aim) = (0, 0, 0)
   for line in open("input.txt"):
@@ -85,6 +89,6 @@ def main():
     
   print(f"--------Advent of Code 2021 [Day 2]--------")
   print(f"[X] Part 1 Answer: {p1}\n[X] Part 2 Answer: {p2}")
-
+  
 if __name__ == "__main__": main()
 ```

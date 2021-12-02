@@ -4,8 +4,9 @@ from re import search, match
 
 def main():
   nP = r'[0-9]+'
-  upDowns = sum(-int(search(nP, line).group()) for line in open("input.txt") if bool(match("up", line))) + sum(int(search(nP, line).group()) for line in open("input.txt") if bool(match("down", line)))
-  p1 = sum(int(search(nP, line).group()) for line in open("input.txt") if bool(match("forward", line))) * upDowns
+  up = sum(-int(search(nP, line).group()) for line in open("input.txt") if bool(match("up", line))) 
+  down = sum(int(search(nP, line).group()) for line in open("input.txt") if bool(match("down", line)))
+  p1 = sum(int(search(nP, line).group()) for line in open("input.txt") if bool(match("forward", line))) * (up + down)
 
   (x, y, aim) = (0, 0, 0)
   for line in open("input.txt"):
