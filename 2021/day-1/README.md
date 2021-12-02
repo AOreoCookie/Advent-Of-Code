@@ -88,11 +88,13 @@ In this example, there are 5 sums that are larger than the previous sum.
 
 # Script
 ```py
+#! /usr/bin/env python3
+
 def main():
   with open("input.txt") as f:
     nums = [int(num.rstrip()) for num in f]
     p1 = sum(1 for i in range(1, len(nums)) if nums[i - 1] < nums[i])
-    p2 = sum(1 for i in range(1, len(nums)) if (len(nums[i-1:i+3]) == 4) and (sum(nums[i-1:i+2]) < sum(nums[i:i+3])))
+    p2 = sum(1 for i, j, k, l in zip(nums, nums[1:], nums[2:], nums[3:]) if i+j+k < j+k+l)
   print(f"--------Advent of Code 2021 [Day 1]--------")
   print(f"[X] Part 1 Answer: {p1}\n[X] Part 2 Answer: {p2}\n")
 
