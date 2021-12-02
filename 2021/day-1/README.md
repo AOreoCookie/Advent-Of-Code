@@ -42,14 +42,13 @@ To do this, **count the number of times a depth measurement increases** from the
 ```
 In this example, there are `7` measurements that are larger than the previous measurement.
 
-### - Answer (Part One) - 
+### --- Answer (Part One) ---
 1. **How many measurements are larger than the previous measurement?**
     - 1583
 
 ---
 
 ## --- Part Two ---
-
 Considering every single measurement isn't as useful as you expected: there's just too much noise in the data.
 
 Instead, consider sums of a three-measurement sliding window. Again considering the above example:
@@ -82,11 +81,11 @@ H: 792 (increased)
 ```
 In this example, there are 5 sums that are larger than the previous sum.
 
-### - Answer (Part Two) -
+### --- Answer (Part Two) ---
 2. **Consider sums of a three-measurement sliding window. How many sums are larger than the previous sum?**
     - 1627
 
-# Script
+# --- Script ---
 ```py
 #! /usr/bin/env python3
 
